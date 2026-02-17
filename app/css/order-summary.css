@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  /* ================= Primary ================= */
+  --neutral-light: #FFFFFF;
+  --neutral-dark: #000000;
+  --ordersummary-gray-600: #717fa6;
+  --ordersummary-purple-500: #766CF1;
+  --ordersummary-blue-50: #F7F9FF;
+  --ordersummary-blue-100: #E0E8FF;
+  --ordersummary-blue-150: #D6E1FF;
+  --ordersummary-blue-700: #382AE1;
+  --ordersummary-blue-950: #1F2E55;
+}
+
+@theme orderSummary {
+  --color-neutral-light: var(--neutral-light);
+  --color-neutral-dark: var(--neutral-dark);
+
+  --color-ordersummary-gray-600: var(--ordersummary-gray-600);
+  --color-ordersummary-purple-500: var(--ordersummary-purple-500);
+
+  --color-ordersummary-blue-50: var(--ordersummary-blue-50);
+  --color-ordersummary-blue-100: var(--ordersummary-blue-100);
+  --color-ordersummary-blue-150: var(--ordersummary-blue-150);
+  --color-ordersummary-blue-700: var(--ordersummary-blue-700);
+  --color-ordersummary-blue-950: var(--ordersummary-blue-950);
+}
+
+body {
+  background-color: var(--ordersummary-blue-100);
+}
