@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import data from "../data/data.json";
 import Image from "next/image";
 import { usePersonalBest } from "./PersonalBestContext";
@@ -17,11 +17,14 @@ function Test() {
   const [difficulty, setDifficulty] = useState<DifficultyType>("easy");
   const [mode, setMode] = useState<"timed" | "passage" | "">("");
   const [typed, setTyped] = useState<string>("");
-  const [char, setChar] = useState(0);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const caretIndex = typed.length;
   const [passage, setPassage] = useState<string>("");
+  const [testStarted, setTestStarted] = useState<boolean>(false);
   const [testComplete, setTestComplete] = useState<boolean>(false);
-  const { personalBest, updatePersonalBest } = usePersonalBest();
+
+  const { personalBest, testsTaken, updatePersonalBest, updateTestsTaken } =
+    usePersonalBest();
 
   // timer
   useEffect(() => {
@@ -84,6 +87,10 @@ function Test() {
   }, [typed, passage]);
 
   useEffect(() => {
+    textareaRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
     setWpm(calculateWPM());
   }, [typed]);
 
@@ -93,6 +100,7 @@ function Test() {
 
   const handleComplete = () => {
     setTestComplete(true);
+    updateTestsTaken();
     // check for pb
     if (wpm > personalBest) {
       updatePersonalBest(wpm);
@@ -135,25 +143,37 @@ function Test() {
     return incorrect;
   };
 
+  const handleFocus = () => {
+    textareaRef.current?.focus();
+  };
+
+  const handleStart = () => {
+    setIsRunning(true);
+    setTestStarted(true);
+    textareaRef.current?.focus();
+  };
+
   const handleReset = (diff: DifficultyType) => {
     if (diff === "") return;
     const passages = data[diff];
 
     const randomPassage = passages[Math.floor(Math.random() * passages.length)];
 
+    setTestStarted(false);
     setTyped("");
     setAccuracy(100);
     setTime(60);
     setIsRunning(false);
     setPassage(randomPassage.text);
     setTestComplete(false);
+    handleFocus();
   };
 
   return (
     <div className="flex flex-col">
       {!testComplete ? (
-        <div className="w-full flex justify-between items-center md:flex-row pb-4 border-b border-typing-test-neutral-500">
-          <div className="flex stats">
+        <div className="w-full flex md:justify-between items-left md:items-center flex-col md:flex-row pb-4 border-b border-typing-test-neutral-500">
+          <div className="flex stats px-2 mb-4 md:mb-0">
             <div className="flex border-r border-typing-test-neutral-500">
               <h2 className="flex text-typing-test-neutral-500 mr-2">
                 WPM:
@@ -189,11 +209,12 @@ function Test() {
           </div>
           <div className="options flex">
             <div className="difficulty flex justify-center items-center px-2 border-r border-typing-test-neutral-500">
-              <div className="text">
+              <div className="text flex">
                 <h2 className="text-typing-test-neutral-400">Difficulty: </h2>
               </div>
-              <div className="difficulty-buttons flex gap-2 justify-center items-center ml-4">
+              <div className="difficulty-buttons grid grid-cols-3 gap-2 ml-4">
                 <button
+                  disabled={testStarted}
                   onClick={() => {
                     setDifficulty("easy");
                   }}
@@ -203,6 +224,7 @@ function Test() {
                   Easy
                 </button>
                 <button
+                  disabled={testStarted}
                   onClick={() => {
                     setDifficulty("medium");
                   }}
@@ -212,6 +234,7 @@ function Test() {
                   Medium
                 </button>
                 <button
+                  disabled={testStarted}
                   onClick={() => {
                     setDifficulty("hard");
                   }}
@@ -253,6 +276,7 @@ function Test() {
         ""
       )}
       {!testComplete ? (
+        // test
         <div className="relative w-full text-[40px] py-10 text-xl leading-relaxed">
           <div className="pointer-events-none whitespace-pre-wrap wrap-break-words">
             {/* split passage into char and record index i */}
@@ -287,8 +311,8 @@ function Test() {
               );
             })}
           </div>
-
           <textarea
+            ref={textareaRef}
             value={typed}
             onChange={(e) => setTyped(e.target.value)}
             spellCheck={false}
@@ -298,13 +322,27 @@ function Test() {
           outline-none
         "
           />
+          {!isRunning && (
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/60">
+              <button
+                onClick={handleStart}
+                className="px-6 py-4 bg-typing-test-blue-600 text-typing-test-neutral-0 font-semibold rounded-lg cursor-pointer text-xl mb-5"
+              >
+                Start Typing Test
+              </button>
+              <h1 className="text-xl font-semibold">
+                Or click the text and start typing
+              </h1>
+            </div>
+          )}
         </div>
       ) : (
+        // results
         <div className="w-full flex flex-col justify-center items-center gap-8 py-8">
           <div className="success w-1/2 flex justify-center items-center">
             {wpm > personalBest ? (
               <Image
-                src={"/typing-test/new-pb.svg"}
+                src={"/typing-test/icon-new-pb.svg"}
                 width={64}
                 height={64}
                 alt="completed-icon"
@@ -328,10 +366,26 @@ function Test() {
               </>
             ) : (
               <>
-                <h1 className="font-bold text-[40px]">Test Complete!</h1>
-                <p className="text-typing-test-neutral-500">
-                  Solid run. Keep pushing to beat your high score.
-                </p>
+                {testsTaken > 1 ? (
+                  <>
+                    {" "}
+                    <h1 className="font-bold text-[40px]">Test Complete!</h1>
+                    <p className="text-typing-test-neutral-500">
+                      Solid run. Keep pushing to beat your high score.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <h1 className="font-bold text-[40px]">
+                      Baseline Established!
+                    </h1>
+                    <p className="text-typing-test-neutral-500">
+                      You've set the bar. Now the real challenge begins—time to
+                      beat it.
+                    </p>
+                  </>
+                )}
               </>
             )}
           </div>
@@ -364,20 +418,24 @@ function Test() {
           <Confetti tweenDuration={5} />
         </div>
       )}
-      <div className="py-8 border-t border-typing-test-neutral-500 w-full flex items-center justify-center">
-        <button
-          className="cursor-pointer font-semibold text-[20px] rounded-lg bg-typing-test-neutral-800 hover:bg-typing-test-neutral-800/70 px-4 py-2.5 flex gap-2"
-          onClick={() => handleReset(difficulty)}
-        >
-          <p>Restart</p>
-          <Image
-            src={"/typing-test/icon-restart.svg"}
-            width={20}
-            height={20}
-            alt="Restart Icon"
-          />
-        </button>
-      </div>
+      {testStarted ? (
+        <div className="py-8 border-t border-typing-test-neutral-500 w-full flex items-center justify-center">
+          <button
+            className="cursor-pointer font-semibold text-[20px] rounded-lg bg-typing-test-neutral-800 hover:bg-typing-test-neutral-800/70 px-4 py-2.5 flex gap-2"
+            onClick={() => handleReset(difficulty)}
+          >
+            <p>Restart</p>
+            <Image
+              src={"/typing-test/icon-restart.svg"}
+              width={20}
+              height={20}
+              alt="Restart Icon"
+            />
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

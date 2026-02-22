@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const links = [
   { title: "Order Summary Component", description: "", href: "/order-summary" },
+  {title: "Typing Speed Test", description: "", href: "/typing-test"}
 ];
 
 export default function Home() {
