@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  /* ================= Neutral ================= */
+  --typing-test-neutral-900: hsl(0, 0%, 7%);
+  --typing-test-neutral-800: hsl(0, 0%, 15%);
+  --typing-test-neutral-500: hsl(240, 3%, 46%);
+  --typing-test-neutral-400: hsl(240, 1%, 59%);
+  --typing-test-neutral-0: hsl(0, 0%, 100%);
+
+  /* ================= Blue ================= */
+  --typing-test-blue-600: hsl(214, 100%, 55%);
+  --typing-test-blue-400: hsl(210, 100%, 65%);
+
+  /* ================= Red ================= */
+  --typing-test-red-500: hsl(354, 63%, 57%);
+
+  /* ================= Green ================= */
+  --typing-test-green-500: hsl(140, 63%, 57%);
+
+  /* ================= Yellow ================= */
+  --typing-test-yellow-400: hsl(49, 85%, 70%);
+}
+
+@theme typingTest {
+  /* Neutral */
+  --color-typing-test-neutral-900: var(--typing-test-neutral-900);
+  --color-typing-test-neutral-800: var(--typing-test-neutral-800);
+  --color-typing-test-neutral-500: var(--typing-test-neutral-500);
+  --color-typing-test-neutral-400: var(--typing-test-neutral-400);
+  --color-typing-test-neutral-0: var(--typing-test-neutral-0);
+
+  /* Blue */
+  --color-typing-test-blue-600: var(--typing-test-blue-600);
+  --color-typing-test-blue-400: var(--typing-test-blue-400);
+
+  /* Red */
+  --color-typing-test-red-500: var(--typing-test-red-500);
+
+  /* Green */
+  --color-typing-test-green-500: var(--typing-test-green-500);
+
+  /* Yellow */
+  --color-typing-test-yellow-400: var(--typing-test-yellow-400);
+}
+
+body {
+  background-color: var(--typing-test-neutral-900);
+  color: var(--typing-test-neutral-0);
+}
+
