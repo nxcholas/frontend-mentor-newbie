@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  /* ================= Primary ================= */
+  --contact-form-green-200: hsl(148, 38%, 91%);
+  --contact-form-green-600: hsl(169, 83%, 21%);
+  --contact-form-green-700: hsl(169, 93%, 18%);
+  --contact-form-red: hsl(0, 66%, 54%);
+
+  /* ================= Neutral ================= */
+  --contact-form-white: hsl(0, 0%, 100%);
+  --contact-form-grey-500: hsl(186, 15%, 59%);
+  --contact-form-grey-900: hsl(187, 24%, 22%);
+}
+
+@theme contactForm {
+  --color-contact-form-green-200: var(--contact-form-green-200);
+  --color-contact-form-green-600: var(--contact-form-green-600);
+  --color-contact-form-green-700: var(--contact-form-green-700);
+  --color-contact-form-red: var(--contact-form-red);
+
+  --color-contact-form-white: var(--contact-form-white);
+  --color-contact-form-grey-500: var(--contact-form-grey-500);
+  --color-contact-form-grey-900: var(--contact-form-grey-900);
+}
+
+body {
+  background-color: var(--contact-form-green-200);
+}
+
+span {
+  color: var(--contact-form-green-600)
+}
