@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  /* ================= Primary ================= */
+  --nft-preview-card-blue-500: hsl(215, 51%, 70%);
+  --nft-preview-card-cyan-400: hsl(178, 100%, 50%);
+
+  /* ================= Neutral ================= */
+  --nft-preview-card-blue-950: hsl(217, 54%, 11%);
+  --nft-preview-card-blue-900: hsl(216, 50%, 16%);
+  --nft-preview-card-blue-800: hsl(215, 32%, 27%);
+  --nft-preview-card-white: hsl(0, 0%, 100%);
+}
+
+@theme nftPreviewCard {
+  /* Primary */
+  --color-nft-preview-card-blue-500: var(--nft-preview-card-blue-500);
+  --color-nft-preview-card-cyan-400: var(--nft-preview-card-cyan-400);
+
+  /* Neutral */
+  --color-nft-preview-card-blue-950: var(--nft-preview-card-blue-950);
+  --color-nft-preview-card-blue-900: var(--nft-preview-card-blue-900);
+  --color-nft-preview-card-blue-800: var(--nft-preview-card-blue-800);
+  --color-nft-preview-card-white: var(--nft-preview-card-white);
+}
+
+body {
+  background-color: var(--nft-preview-card-blue-950);
+}
