@@ -53,7 +53,7 @@ function NFTPreviewCard({
         <div className="currency-container flex justify-center items-center gap-x-2">
           <img
             src="/nft-preview-card/icon-ethereum.svg"
-            alt="Ethereum"
+            alt="Ethereum Icon"
             className="h-4.5 w-2.75"
           />
           <span className="text-nft-preview-card-cyan-400 font-semibold text-lg">
