@@ -24,7 +24,7 @@ function NFTPreviewCard({
   creator,
 }: NFTPreviewCardType) {
   return (
-    <div className="w-87.5 h-149 bg-nft-preview-card-blue-900 rounded-2xl p-6 flex flex-col gap-6 drop-shadow-2xl">
+    <article className="w-87.5 h-149 bg-nft-preview-card-blue-900 rounded-2xl p-6 flex flex-col gap-6 drop-shadow-2xl">
       <div className="image-container relative w-full aspect-square overflow-hidden group cursor-pointer">
         <Image
           src={imgSrc}
@@ -83,7 +83,7 @@ function NFTPreviewCard({
           Creation of <span className="text-white">{creator}</span>
         </p>
       </div>
-    </div>
+    </article>
   );
 }
 

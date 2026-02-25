@@ -19,7 +19,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <article className={`${outfit.className} antialiased`}>{children}</article>
-  );
+  return <main className={`${outfit.className} antialiased`}>{children}</main>;
 }
