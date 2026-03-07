@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  /* ================= Primary ================= */
+  --news-homepage-orange-500: hsl(35, 77%, 62%);
+  --news-homepage-red-500: hsl(5, 85%, 63%);
+
+  /* ================= Neutral ================= */
+  --news-homepage-off-white: hsl(36, 100%, 99%);
+  --news-homepage-grayish-blue: hsl(233, 8%, 79%);
+  --news-homepage-dark-grayish-blue: hsl(236, 13%, 42%);
+  --news-homepage-very-dark-blue: hsl(240, 100%, 5%);
+}
+
+@theme newsHomepage {
+  --color-news-homepage-orange-500: var(--news-homepage-orange-500);
+  --color-news-homepage-red-500: var(--news-homepage-red-500);
+
+  --color-news-homepage-off-white: var(--news-homepage-off-white);
+  --color-news-homepage-grayish-blue: var(--news-homepage-grayish-blue);
+  --color-news-homepage-dark-grayish-blue: var(--news-homepage-dark-grayish-blue);
+  --color-news-homepage-very-dark-blue: var(--news-homepage-very-dark-blue);
+}

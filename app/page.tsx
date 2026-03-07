@@ -4,7 +4,8 @@ const links = [
   { title: "Order Summary Component", description: "", href: "/order-summary" },
   { title: "Typing Speed Test", description: "", href: "/typing-test" },
   { title: "Contact Form", description: "", href: "/contact-form" },
-  {title: "NFT Preview Card", description: "", href: "/nft-preview-card"}
+  {title: "NFT Preview Card", description: "", href: "/nft-preview-card"},
+  {title: "News Homepage", description: "", href: "/news-homepage"}
 ];
 
 export default function Home() {
