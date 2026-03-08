@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  /* ================= Neutral ================= */
+  --devjobs-neutral-950: #000000;
+  --devjobs-neutral-0: #ffffff;
+
+  /* ================= Slate ================= */
+  --devjobs-slate-950: #121721;
+  --devjobs-slate-900: #19202d;
+  --devjobs-slate-500: #6e8098;
+  --devjobs-slate-300: #9daec2;
+  --devjobs-slate-100: #f4f6f8;
+
+  /* ================= Indigo ================= */
+  --devjobs-indigo-500: #5964e0;
+  --devjobs-indigo-300: #939bf4;
+
+  --background: var(--devjobs-neutral-0);
+}
+
+@theme devjobs {
+  /* ================= Base ================= */
+  --color-neutral-950: var(--devjobs-neutral-950);
+  --color-neutral-0: var(--devjobs-neutral-0);
+
+  /* ================= Slate ================= */
+  --color-devjobs-slate-950: var(--devjobs-slate-950);
+  --color-devjobs-slate-900: var(--devjobs-slate-900);
+  --color-devjobs-slate-500: var(--devjobs-slate-500);
+  --color-devjobs-slate-300: var(--devjobs-slate-300);
+  --color-devjobs-slate-100: var(--devjobs-slate-100);
+
+  /* ================= Indigo ================= */
+  --color-devjobs-indigo-500: var(--devjobs-indigo-500);
+  --color-devjobs-indigo-300: var(--devjobs-indigo-300);
+}
+
+.dark {
+  --background: var(--devjobs-slate-950);
+}
+
+body {
+  background-color: var(--background);
+}
