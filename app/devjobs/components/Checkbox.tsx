@@ -14,7 +14,7 @@ function Checkbox({ check, setCheck }: CheckboxProps) {
     <button
       onClick={() => setCheck(!check)}
       className={`
-        w-6 h-6 rounded-sm flex items-center justify-center
+        min-w-6 min-h-6 rounded-sm flex items-center justify-center
         transition-colors cursor-pointer
         ${
           check
