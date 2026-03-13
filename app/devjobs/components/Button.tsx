@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 
 type ButtonType = {
   type?: "mobile";
-  text?: String;
+  text?: string;
   onClick?: () => void;
 };
 
@@ -13,7 +13,7 @@ function Button({ text, type, onClick }: ButtonType) {
   return (
     <button
       onClick={onClick}
-      className="px-4 py-3 lg:px-8 bg-devjobs-indigo-500 rounded-md font-bold text-devjobs-slate-100 hover:bg-devjobs-indigo-300 cursor-pointer min-w-10 min-h-10"
+      className="px-4 py-3 lg:px-8 bg-devjobs-indigo-500 rounded-md font-bold md:w-auto w-full text-devjobs-slate-100 hover:bg-devjobs-indigo-300 cursor-pointer min-w-10 min-h-10 text-nowrap"
     >
       {type === "mobile" ? (
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
