@@ -5,7 +5,8 @@ const links = [
   { title: "Typing Speed Test", description: "", href: "/typing-test" },
   { title: "Contact Form", description: "", href: "/contact-form" },
   {title: "NFT Preview Card", description: "", href: "/nft-preview-card"},
-  {title: "News Homepage", description: "", href: "/news-homepage"}
+  {title: "News Homepage", description: "", href: "/news-homepage"},
+  {title: "Devjobs", description: "Advanced", href: "/devjobs"}
 ];
 
 export default function Home() {
