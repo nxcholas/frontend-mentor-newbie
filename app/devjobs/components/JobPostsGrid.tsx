@@ -14,7 +14,7 @@ function JobPostsGrid({ filteredData }: JobPostsGridProps) {
     <section className="w-full flex flex-col justify-center items-center">
       {filteredData.length > 0 ? (
         <>
-          <div className="grid w-full max-w-278 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-7.5 gap-y-10 place-items-center px-6.5">
+          <div className="grid w-full max-w-278 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-7.5 gap-y-10 place-items-center px-6.5 md:px-0">
             {filteredData.map((job) => (
               <Link className="w-full" key={job.id} href={`/devjobs/${job.id}`}>
                 <JobPostCard
