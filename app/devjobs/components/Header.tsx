@@ -6,7 +6,9 @@ import { useTheme } from "../context/ThemeContext";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import data from "@/app/devjobs/data/data.json";
+import { Activity } from "react";
 import { useState } from "react";
+import FilterModal from "./FilterModal";
 
 type headerType = {
   setTitle?: (title: string) => void;
@@ -15,6 +17,8 @@ type headerType = {
   setContract?: React.Dispatch<React.SetStateAction<boolean>>;
   searchOnClick?: () => void;
   jobID?: string;
+  modalVisible?: boolean;
+  setModalVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function Header({
@@ -24,12 +28,14 @@ function Header({
   setContract,
   searchOnClick,
   jobID,
+  modalVisible,
+  setModalVisible,
 }: headerType) {
   const { dark } = useTheme();
   const job = data.find((j) => j.id === Number(jobID));
 
   return (
-    <header className="w-full h-37.5 bg-[url('/devjobs/bg-pattern-header.svg')] bg-no-repeat bg-cover bg-center flex justify-center relative mb-28">
+    <header className="fixed w-full h-37.5 bg-[url('/devjobs/bg-pattern-header.svg')] bg-no-repeat bg-cover bg-center flex justify-center relative mb-28">
       <div className="w-full max-w-278 px-8 lg:px-0">
         <div className="flex justify-between items-center h-full">
           <Link href={"/devjobs"}>
@@ -148,14 +154,16 @@ function Header({
                 <div className="hidden lg:block">
                   <Button text={"Search"} onClick={searchOnClick} />
                 </div>
-                <div className="filter-icon md:hidden flex justify-center items-center gap-6">
-                  <Image
-                    src="/devjobs/icon-filter.svg"
-                    width={16}
-                    height={16}
-                    alt="Search"
-                    className="h-5 w-auto"
-                  />
+                <div className="filter-icon md:hidden flex justify-center items-center gap-6 ">
+                  <button onClick={() => setModalVisible?.(!modalVisible)}>
+                    <Image
+                      src="/devjobs/icon-filter.svg"
+                      width={16}
+                      height={16}
+                      alt="Search"
+                      className="h-5 w-auto cursor-pointer"
+                    />
+                  </button>
                 </div>
                 <div className="block ml-4 lg:hidden">
                   <Button type="mobile" onClick={searchOnClick} />
@@ -165,6 +173,16 @@ function Header({
           </div>
         )}
       </div>
+      <Activity mode={modalVisible ? "visible" : "hidden"}>
+        <FilterModal
+          modalVisible={modalVisible}
+          contract={contract}
+          setLocation={setLocation}
+          setContract={setContract}
+          setModalVisible={setModalVisible}
+          searchOnClick={searchOnClick}
+        />
+      </Activity>
     </header>
   );
 }

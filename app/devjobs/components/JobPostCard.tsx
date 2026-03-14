@@ -25,7 +25,7 @@ function JobPostCard({
 }: JobPostCardType) {
   const { dark } = useTheme();
   return (
-    <div className={`group relative job-post-card w-full rounded-md pl-8 py-8 flex flex-col justify-center items-left cursor-pointer ${dark ? "bg-devjobs-slate-900" : "bg-white"}`}>
+    <div className={`group relative job-post-card w-full rounded-md pl-8 py-8 flex flex-col justify-center items-left cursor-pointer ${dark ? "bg-devjobs-slate-900" : "shadow-md"}`}>
       <div
         className={`job-logo absolute top-0 -translate-y-1/2 w-12.5 h-12.5 rounded-2xl flex justify-center items-center mb-6`}
         style={{ backgroundColor: logoBackground }}

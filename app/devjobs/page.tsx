@@ -9,10 +9,8 @@ function page() {
   const [location, setLocation] = useState<String>("");
   const [contract, setContract] = useState<boolean>(false);
   const [filteredData, setFilteredData] = useState(data);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(contract)
-  }, [contract])
 
     const handleSearch = () => {
     const results = data.filter((job) => {
@@ -31,6 +29,7 @@ function page() {
     });
 
     setFilteredData(results);
+    setModalVisible(!modalVisible)
     console.log(results)
   };
 
@@ -42,6 +41,8 @@ function page() {
         contract={contract}
         setContract={setContract}
         searchOnClick={handleSearch}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
       <JobPostsGrid filteredData={filteredData}></JobPostsGrid>
     </main>
