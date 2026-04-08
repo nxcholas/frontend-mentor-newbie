@@ -1,12 +1,21 @@
 import Link from "next/link";
 
 const links = [
-  { title: "Order Summary Component", description: "", href: "/order-summary" },
-  { title: "Typing Speed Test", description: "", href: "/typing-test" },
-  { title: "Contact Form", description: "", href: "/contact-form" },
-  {title: "NFT Preview Card", description: "", href: "/nft-preview-card"},
-  {title: "News Homepage", description: "", href: "/news-homepage"},
-  {title: "Devjobs", description: "Advanced", href: "/devjobs"}
+  { title: "Order Summary Component", description: "Newbie", href: "/order-summary" },
+  { title: "Typing Speed Test", description: "Junior", href: "/typing-test" },
+  { title: "Contact Form", description: "Newbie", href: "/contact-form" },
+  {
+    title: "NFT Preview Card",
+    description: "Newbie",
+    href: "/nft-preview-card",
+  },
+  { title: "News Homepage", description: "Junior", href: "/news-homepage" },
+  { title: "Devjobs", description: "Advanced", href: "/devjobs" },
+  {
+    title: "Newsletter Signup",
+    description: "Newbie",
+    href: "/newsletter-signup",
+  },
 ];
 
 export default function Home() {

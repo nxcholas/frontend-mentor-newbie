@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --newsletter-signup-red: hsl(4, 100%, 67%);
+  --newsletter-signup-blue-800: hsl(234, 29%, 20%);
+  --newsletter-signup-blue-700: hsl(235, 18%, 26%);
+  --newsletter-signup-grey: hsl(0, 0%,58%);
+  --newsletter-signup-white: hsl(0, 0%, 100%);
+}
+
+@theme newsletterSignUp {
+  --color-newsletter-signup-red: var(--newsletter-signup-red);
+  --color-newsletter-signup-blue-800: var(--newsletter-signup-blue-800);
+  --color-newsletter-signup-blue-700: var(--newsletter-signup-blue-700);
+  --color-newsletter-signup-grey: var(--newsletter-signup-grey);
+  --color-newsletter-signup-white: var(--newsletter-signup-white);
+}
+
+
+body {
+  background-color: var(--newsletter-signup-blue-700);
+}
