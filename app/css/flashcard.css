@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  /* neutral colors */
+  --flashcard-neutral-900: #2E1401;
+  --flashcard-neutral-600: #6D5B4D;
+  --flashcard-neutral-100: #F7F3F0;
+  --flashcard-neutral-0: #FFFFFF;
+
+  /* accent colors */
+  --flashcard-yellow: #F8CB46;
+  --flashcard-blue-light: #92ADEB;
+  --flashcard-blue-dark: #5072C7;
+  --flashcard-teal: #47D9C9;
+  --flashcard-pink-light: #FCBAE5;
+  --flashcard-pink-regular: #F073A3;
+  --flashcard-pink-dark: #E11966;
+}
+
+@theme flashcard {
+
+--color-flashcard-neutral-900: var(--flashcard-neutral-900);
+--color-flashcard-neutral-600: var(--flashcard-neutral-600);
+--color-flashcard-neutral-100: var(--flashcard-neutral-100);
+--color-flashcard-neutral-0: var(--flashcard-neutral-0);
+--color-flashcard-yellow: var(--flashcard-yellow);
+--color-flashcard-blue-light: var(--flashcard-blue-light);
+--color-flashcard-blue-dark: var(--flashcard-blue-dark);
+--color-flashcard-teal: var(--flashcard-teal);
+--color-flashcard-pink-light: var(--flashcard-pink-light);
+--color-flashcard-pink-regular: var(--flashcard-pink-regular);
+--color-flashcard-pink-dark: var(--flashcard-pink-dark)
+}
+
+.text-preset-1 {
+  font-size: 40px;
+  line-height: 120%;
+  font-weight: bold;
+}
+
+.text-preset-1-tablet {
+  font-size: 32px;
+  line-height: 120%;
+  font-weight: bold;
+}
+
+.text-preset-1-mobile {
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: bold;
+}
+
+.text-preset-2 {
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+.text-preset-3 {
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+.text-preset-4-semibold {
+  font-size: 16;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+.text-preset-4-medium {
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 500;
+}
+
+.text-preset-4-regular {
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+.text-preset-5 {
+  font-size: 14px;
+  line-height: 120%;
+}
+
+.text-preset-6 {
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: -3%;
+}
